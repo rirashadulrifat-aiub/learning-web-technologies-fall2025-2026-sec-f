@@ -1,0 +1,50 @@
+<html>
+
+<head>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="abc.html" onsubmit="return gCheck()">
+        <input type="radio" name="gender" id="" value="men">
+        <label for="gender">Men</label><br>
+        <input type="radio" name="gender" id="" value="female">
+        <label for="gender">Female</label><br>
+        <input type="radio" name="gender" id="" value="others">
+        <label for="gender">Others</label><br>
+
+        <p id="error"></p>
+        <input type="submit" value="submit">
+    </form>
+
+    <script>
+        function gCheck() {
+
+            let radios = document.getElementsByName("gender");
+            let error = document.getElementById("error");
+            let selected = null;
+
+           
+            for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selected = radios[i].value;
+                    break;
+                }
+            }
+
+            if (selected === null) {
+                error.innerHTML = "Select your gender.";
+                return false;
+            } else {
+                error.innerHTML = "";
+                return true;
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

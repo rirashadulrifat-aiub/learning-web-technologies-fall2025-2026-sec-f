@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+
+    <h1>Personal Info</h1>
+
+    <div style=" margin-bottom: 20px;">
+        <input type="text" id="labelInput" placeholder="Text Box">
+
+        <label>Info Type:</label>
+        <select id="fieldType">
+            <option value="full_name" data-type="text">Full Name</option>
+            <option value="email" data-type="email">Email</option>
+            <option value="phone" data-type="tel">Phone</option>
+            <option value="address" data-type="text">Address</option>
+            <option value="dob" data-type="date">Date of Birth</option>
+            <option value="occupation" data-type="text">Occupation</option>
+        </select>
+
+        <button id="addBtn">Add Field</button>
+    </div>
+
+    <div id="formContainer">
+        <p id="emptyState">No fields added yet.</p>
+    </div>
+
+    <br>
+    <button id="saveBtn" style="display:none;">Save Details</button>
+
+    <div id="outputContainer" style="display:none; margin-top: 20px; ">
+        <h3>Saved Information:</h3>
+        <div id="outputContent"></div>
+    </div>
+
+    <script>
+        const addBtn = document.getElementById('addBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const fieldTypeSelect = document.getElementById('fieldType');
+        const labelInput = document.getElementById('labelInput');
+        const formContainer = document.getElementById('formContainer');
+        const emptyState = document.getElementById('emptyState');
+        const outputContainer = document.getElementById('outputContainer');
+        const outputContent = document.getElementById('outputContent');
+
+        let fieldCount = 0;
+
+        addBtn.addEventListener('click', () => {
+            const customLabel = labelInput.value.trim();
+            const selectedOption = fieldTypeSelect.options[fieldTypeSelect.selectedIndex];
+            const labelText = customLabel || selectedOption.text;
+            const inputType = selectedOption.getAttribute('data-type');
+            const fieldKey = selectedOption.value;
+
+            addField(labelText, inputType, fieldKey);
+            
+            labelInput.value = '';
+            labelInput.focus();
+        });
+
+        function addField(label, type, key) {
+            fieldCount++;
+            
+            emptyState.style.display = 'none';
+            saveBtn.style.display = 'block';
+            outputContainer.style.display = 'none';
+
+            const row = document.createElement('div');
+            row.id = `field-row-${fieldCount}`;
+            row.style.marginBottom = "15px";
+            row.style.paddingBottom = "10px";
+            row.style.borderBottom = "1px dashed #ccc";
+            
+            row.innerHTML = `
+                <label><strong>${label}:</strong></label><br>
+                <input 
+                    type="${type}" 
+                    data-key="${key}" 
+                    data-label="${label}"
+                    class="dynamic-input"
+                >
+                <div class="error-msg" style="color: red; display: none;"></div>
+            `;
+
+            formContainer.appendChild(row);
+        }
+
+        window.removeField = function(id) {
+            const row = document.getElementById(`field-row-${id}`);
+            if (row) {
+                row.remove();
+            }
+            if (formContainer.children.length <= 1) {
+                emptyState.style.display = 'block';
+                saveBtn.style.display = 'none';
+                outputContainer.style.display = 'none';
+            }
+        };
+
+        saveBtn.addEventListener('click', () => {
+            const inputs = document.querySelectorAll('.dynamic-input');
+            let isValid = true;
+            const collectedData = [];
+
+            document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+
+            if (inputs.length === 0) return;
+
+            inputs.forEach(input => {
+                const value = input.value.trim();
+                const key = input.getAttribute('data-key');
+                const label = input.getAttribute('data-label');
+                const msgEl = input.nextElementSibling.nextElementSibling;
+
+                let error = null;
+
+                if (!value) {
+                    error = `${label} is required.`;
+                } else if (key === 'email') {
+                    if (!value.includes('@') || !value.includes('.')) {
+                        error = "Please enter a valid email address.";
+                    }
+                } else if (key === 'phone') {
+                    if (value.length < 8 || isNaN(value)) {
+                        error = "Please enter a valid phone number (at least 8 digits).";
+                    }
+                } else if (key === 'dob') {
+                    const selectedDate = new Date(value);
+                    if (selectedDate > new Date()) {
+                        error = "Date of birth cannot be in the future.";
+                    }
+                }
+
+                if (error) {
+                    isValid = false;
+                    msgEl.textContent = error;
+                    msgEl.style.display = 'block';
+                } else {
+                    collectedData.push({ label, value });
+                }
+            });
+
+            if (isValid) {
+                displayResults(collectedData);
+            }
+        });
+
+        function displayResults(data) {
+            outputContent.innerHTML = '';
+            data.forEach(item => {
+                const div = document.createElement('div');
+                div.innerHTML = `<strong>${item.label}:</strong> ${item.value}`;
+                outputContent.appendChild(div);
+            });
+            outputContainer.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

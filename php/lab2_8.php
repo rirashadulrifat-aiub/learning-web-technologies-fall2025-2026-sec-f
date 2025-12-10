@@ -26,6 +26,7 @@ foreach($alphabet as $row){
         echo($value);
     }
     echo("<br>");
+    echo("<br>");
 }
 
 ?>

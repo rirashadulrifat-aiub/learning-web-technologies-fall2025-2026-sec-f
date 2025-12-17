@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Failed</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #fde6f4;
+        }
+
+        .pink {
+            background-color: #fde6f4;
+            height: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 16px;
+            padding-right: 50px;
+        }
+
+        .navLink {
+            text-decoration: none;
+            color: #EC009B;
+            font-weight: 600;
+        }
+
+        .logoArea {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .logoText {
+            color: #00acd4;
+            margin-left: 10px;
+        }
+
+        .fail-container {
+            width: 100%;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .fail-box {
+            width: 420px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .fail-icon {
+            font-size: 80px;
+            color: #ff2e63;
+        }
+
+        h1 {
+            color: #EC009B;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .retryBtn {
+            background-color: #EC009B;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            width: 100%;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .retryBtn:hover {
+            opacity: 0.9;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 40px;
+        }
+
+        .copyright {
+            border-top: 1px solid #858D9E;
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            margin: auto;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Nav -->
+    <nav class="pink">
+        <a class="navLink" href="#">Home</a>
+        <a class="navLink" href="#">Help & Support</a>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logoArea">
+        <div class="logo">
+            <img src="cart.png" height="60" />
+            <h1 class="logoText">BestCart</h1>
+        </div>
+    </div>
+
+    <!-- Payment Failed Box -->
+    <section class="fail-container">
+        <div class="fail-box">
+            <div class="fail-icon">❌</div>
+            <h1>Payment Failed</h1>
+            <p>Your payment could not be processed.<br>Please try again or use a different payment method.</p>
+            <button class="retryBtn">Try Again</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div>
+                <p><strong>Address:</strong> Rockib Regnum Center, Chattogram</p>
+                <p><strong>Phone:</strong> 01612975300</p>
+                <p><strong>Email:</strong> customer.care@bestcart.com</p>
+            </div>
+            <div>
+                <p><strong>BestCart</strong></p>
+                <p>About Us</p>
+                <p>Blog</p>
+                <p>Cookies Policy</p>
+            </div>
+            <div>
+                <p><strong>Customer Care</strong></p>
+                <p>Return & Refund</p>
+                <p>Privacy Policy</p>
+                <p>Terms & Conditions</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 BestCart — All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

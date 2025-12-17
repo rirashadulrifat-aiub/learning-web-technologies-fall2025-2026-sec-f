@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Checkout Page</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -49,7 +50,7 @@
       color: #444;
     }
 
-    input, select {
+    input {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
@@ -57,11 +58,9 @@
       border-radius: 6px;
     }
 
-    .payment-methods {
-      margin-top: 15px;
-      padding: 15px;
-      border: 2px solid pink;
-      border-radius: 10px;
+    small {
+      color: red;
+      font-size: 13px;
     }
 
     .summary-item {
@@ -85,46 +84,42 @@
     .checkout-btn:hover {
       background: #ff2e8b;
     }
-
   </style>
 </head>
+
 <body>
 
   <div class="container">
 
-    <!-- Billing Information -->
+    <!-- Billing Info -->
     <div class="checkout-section">
       <h2>Billing Information</h2>
 
       <label>Full Name</label>
-      <input type="text" placeholder="Enter your full name" />
+      <input id="name" type="text" placeholder="Enter your full name"/>
+      <small id="nameError"></small>
 
       <label>Email Address</label>
-      <input type="email" placeholder="Enter your email" />
+      <input id="email" type="email" placeholder="Enter your email"/>
+      <small id="emailError"></small>
 
       <label>Phone Number</label>
-      <input type="text" placeholder="Enter phone number" />
+      <input id="phone" type="text" placeholder="Enter phone number"/>
+      <small id="phoneError"></small>
 
       <label>Street Address</label>
-      <input type="text" placeholder="House, Road, Area" />
+      <input id="address" type="text" placeholder="House, Road, Area"/>
+      <small id="addressError"></small>
 
       <label>City</label>
-      <input type="text" placeholder="City name" />
+      <input id="city" type="text" placeholder="City name"/>
+      <small id="cityError"></small>
 
       <label>Postal Code</label>
-      <input type="text" placeholder="Postal code" />
+      <input id="postal" type="text" placeholder="Postal code"/>
+      <small id="postalError"></small>
 
-      <h2>Payment Method</h2>
-
-      <div class="payment-methods">
-        <label><input type="radio" name="pay" /> Cash on Delivery</label>
-        <label><input type="radio" name="pay" /> bKash</label>
-        <label><input type="radio" name="pay" /> Nagad</label>
-        <label><input type="radio" name="pay" /> Rocket</label>
-        <label><input type="radio" name="pay" /> Credit/Debit Card</label>
-      </div>
-
-      <button class="checkout-btn">Confirm Order</button>
+      <button class="checkout-btn" onclick="submitCheckout()">Confirm Order</button>
     </div>
 
     <!-- Order Summary -->
@@ -149,6 +144,49 @@
     </div>
 
   </div>
+
+
+  <!-- VALIDATION SCRIPT -->
+  <script>
+    function submitCheckout() {
+
+      // Clear errors
+      document.getElementById("nameError").innerText = "";
+      document.getElementById("emailError").innerText = "";
+      document.getElementById("phoneError").innerText = "";
+
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+
+      let isValid = true;
+
+      // Name validation
+      if (name.length < 3) {
+        document.getElementById("nameError").innerText = "Name must be at least 3 characters.";
+        isValid = false;
+      }
+
+      // Email validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").innerText = "Invalid email format.";
+        isValid = false;
+      }
+
+      // Phone validation: must be exactly 11 digits
+      if (!/^\d{11}$/.test(phone)) {
+        document.getElementById("phoneError").innerText = "Phone number must be exactly 11 digits.";
+        isValid = false;
+      }
+
+      // NO validation for address, city, postal (as requested)
+
+      if (isValid) {
+        alert("Order Confirmed!");
+      }
+    }
+  </script>
 
 </body>
 </html>

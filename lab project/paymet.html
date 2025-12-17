@@ -19,9 +19,7 @@
 
         h2{color:#EC009B;margin-bottom:20px;}
 
-        .section{
-            margin-bottom:25px;
-        }
+        .section{margin-bottom:25px;}
 
         .section label{
             display:block;
@@ -35,7 +33,13 @@
             padding:12px;
             border:1px solid #6d7482;
             border-radius:5px;
-            margin-bottom:12px;
+            margin-bottom:5px;
+        }
+
+        .error{
+            color:red;
+            font-size:14px;
+            margin-bottom:10px;
         }
 
         .payment-options{
@@ -54,9 +58,7 @@
             background:#fff0fa;
         }
 
-        .pay-card:hover{
-            background:#ffd4ef;
-        }
+        .pay-card:hover{background:#ffd4ef;}
 
         .btn{
             width:100%;
@@ -80,13 +82,16 @@
 
     <div class="section">
         <label>Full Name</label>
-        <input type="text" class="inputBox" placeholder="Enter your name" />
+        <input id="name" type="text" class="inputBox" placeholder="Enter your name" />
+        <div id="nameError" class="error"></div>
 
         <label>Phone Number</label>
-        <input type="text" class="inputBox" placeholder="01XXXXXXXXX" />
+        <input id="phone" type="text" class="inputBox" placeholder="01XXXXXXXXX" />
+        <div id="phoneError" class="error"></div>
 
         <label>Email (Optional)</label>
-        <input type="text" class="inputBox" placeholder="Enter email" />
+        <input id="email" type="text" class="inputBox" placeholder="Enter email" />
+        <div id="emailError" class="error"></div>
     </div>
 
     <div class="section">
@@ -143,7 +148,41 @@
     }
 
     function confirmPayment(){
-        alert("Payment Successful! Your order is confirmed.");
+        // Clear previous errors
+        document.getElementById("nameError").innerText = "";
+        document.getElementById("phoneError").innerText = "";
+        document.getElementById("emailError").innerText = "";
+
+        let name = document.getElementById("name").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let email = document.getElementById("email").value.trim();
+
+        let isValid = true;
+
+        // Name validation
+        if (name.length < 3) {
+            document.getElementById("nameError").innerText = "Name must be at least 3 characters.";
+            isValid = false;
+        }
+
+        // Phone validation (11 digits)
+        if (!/^\d{11}$/.test(phone)) {
+            document.getElementById("phoneError").innerText = "Phone number must be exactly 11 digits.";
+            isValid = false;
+        }
+
+        // Email validation (optional but must be valid if typed)
+        if (email.length > 0) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").innerText = "Invalid email format.";
+                isValid = false;
+            }
+        }
+
+        if (isValid) {
+            alert("Payment Successful! Your order is confirmed.");
+        }
     }
 </script>
 

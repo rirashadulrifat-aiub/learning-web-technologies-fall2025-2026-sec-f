@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BestCart – Cart</title>
-<link rel="stylesheet" href="style.css">
+<title>BestCart Cart</title>
 
 <style>
-/* --- Your Provided CSS --- */
+
 *{font-family: sans-serif;}
 .logo{display:flex;} .logoText{color:#00acd4;}
 .navLink{display:flex;color:#EC009B;text-decoration:none;gap:5px;}
@@ -65,8 +64,8 @@ h1{text-align:center;color:#EC009B;margin-top:20px;}
 
 <script>
 let cartItems = [
-    {id:1, title:"Pink Hoodie", price:1200, qty:1, img:"https://via.placeholder.com/80"},
-    {id:2, title:"Cute Bag", price:850, qty:2, img:"https://via.placeholder.com/80"}
+    {id:1, title:"Pink Hoodie", price:1200, qty:1, img:"hoodie.png"},
+    {id:2, title:"Cute Bag", price:850, qty:2, img:"cutebag.png"}
 ];
 
 function renderCart(){
@@ -114,14 +113,13 @@ function removeItem(id){
 renderCart();
 </script>
 
-<!-- FOOTER -->
-<footer>
-    <div class="footer">
-        <div>
-            <div class="about"><i class="hgi hgi-stroke hgi-location-06"></i><p>Rockib Regnum Center, Chattogram</p></div>
-            <div class="about"><i class="hgi hgi-stroke hgi-call"></i><p>01612975300</p></div>
-            <div class="about"><i class="hgi hgi-stroke hgi-mail-01"></i><p>customer.care@bestcart.com</p></div>
-        </div>
+ <footer>
+        <div class="footer">
+            <div>
+                <p><strong>Address:</strong> Kuril, Dhaka</p>
+                <p><strong>Phone:</strong> 0123456789</p>
+                <p><strong>Email:</strong> customer.care@bestcart.com</p>
+            </div>
         <div class="aref">
             <p class="titleFooter">BestCart</p>
             <a href="#">About Us</a>

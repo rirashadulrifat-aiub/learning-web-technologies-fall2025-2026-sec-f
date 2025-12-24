@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Page</title>
+
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Payment Details</h2>
+
+    <div class="section">
+        <label>Full Name</label>
+        <input id="name" type="text" class="inputBox" placeholder="Enter your name" />
+        <div id="nameError" class="error"></div>
+
+        <label>Phone Number</label>
+        <input id="phone" type="text" class="inputBox" placeholder="01XXXXXXXXX" />
+        <div id="phoneError" class="error"></div>
+
+        <label>Email (Optional)</label>
+        <input id="email" type="text" class="inputBox" placeholder="Enter email" />
+        <div id="emailError" class="error"></div>
+    </div>
+
+    <div class="section">
+        <h3 style="color:#EC009B;">Select Payment Method</h3>
+
+        <div class="payment-options">
+            <div class="pay-card" onclick="selectPayment('Card')">💳 Card</div>
+            <div class="pay-card" onclick="selectPayment('Bkash')">📱 bKash</div>
+            <div class="pay-card" onclick="selectPayment('Nagad')">💰 Nagad</div>
+        </div>
+    </div>
+
+    <div id="paymentFields"></div>
+
+    <button class="btn" onclick="confirmPayment()">Confirm Payment</button>
+</div>
+
+<!-- Link to External JS -->
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout Page</title>
+
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Billing Info -->
+    <div class="checkout-section">
+      <h2>Billing Information</h2>
+
+      <label>Full Name</label>
+      <input id="name" type="text" placeholder="Enter your full name"/>
+      <small id="nameError"></small>
+
+      <label>Email Address</label>
+      <input id="email" type="email" placeholder="Enter your email"/>
+      <small id="emailError"></small>
+
+      <label>Phone Number</label>
+      <input id="phone" type="text" placeholder="Enter phone number"/>
+      <small id="phoneError"></small>
+
+      <label>Street Address</label>
+      <input id="address" type="text" placeholder="House, Road, Area"/>
+      <small id="addressError"></small>
+
+      <label>City</label>
+      <input id="city" type="text" placeholder="City name"/>
+      <small id="cityError"></small>
+
+      <label>Postal Code</label>
+      <input id="postal" type="text" placeholder="Postal code"/>
+      <small id="postalError"></small>
+
+      <button class="checkout-btn" onclick="submitCheckout()">Confirm Order</button>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+
+      <div class="summary-item">
+        <span>Product Total:</span>
+        <span>৳ 2000</span>
+      </div>
+
+      <div class="summary-item">
+        <span>Delivery Charge:</span>
+        <span>৳ 80</span>
+      </div>
+
+      <div class="summary-item" style="font-weight: bold;">
+        <span>Total Amount:</span>
+        <span>৳ 2080</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Link to External JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+*{font-family:sans-serif;margin:0;padding:0;box-sizing:border-box;}
+body{background:#fde6f4;padding:20px;}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+h2{color:#EC009B;margin-bottom:20px;}
+
+.section{margin-bottom:25px;}
+
+.section label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:600;
+    color:#333;
+}
+
+.inputBox{
+    width:100%;
+    padding:12px;
+    border:1px solid #6d7482;
+    border-radius:5px;
+    margin-bottom:5px;
+}
+
+.error{
+    color:red;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.payment-options{
+    display:flex;
+    gap:20px;
+    margin-top:10px;
+}
+
+.pay-card{
+    width:150px;
+    padding:15px;
+    border:1px solid #EC009B;
+    border-radius:10px;
+    text-align:center;
+    cursor:pointer;
+    background:#fff0fa;
+}
+
+.pay-card:hover{background:#ffd4ef;}
+
+.btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    background:#EC009B;
+    font-size:18px;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+.btn:hover{opacity:0.9;}

@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #fde6f4;
+}
+
+.pink {
+    background-color: #fde6f4;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    padding-right: 50px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #EC009B;
+    font-weight: 600;
+}
+
+.logoArea {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+}
+
+.logoText {
+    color: #00acd4;
+    margin-left: 10px;
+}
+
+.fail-container {
+    width: 100%;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.fail-box {
+    width: 420px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.fail-icon {
+    font-size: 80px;
+    color: #ff2e63;
+}
+
+h1 {
+    color: #EC009B;
+}
+
+p {
+    color: #555;
+}
+
+.retryBtn {
+    background-color: #EC009B;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.retryBtn:hover {
+    opacity: 0.9;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px;
+}
+
+.copyright {
+    border-top: 1px solid #858D9E;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    padding-top: 10px;
+}
